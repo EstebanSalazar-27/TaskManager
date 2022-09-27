@@ -54,7 +54,7 @@ export const TaskForm = ({ dispatchAction, showTaskCreation }: TaskFormProps) =>
                     <option value="high">high</option>
                 </select>
             </label>
-            <input type="submit" className='w-full bg-green-500 py-2 text-slate-50 font-semibold  cursor-pointer hover:bg-green-400 duration-200 absolute bottom-0 left-0' value="Confirm" />
+            <input type="submit" className='w-full bg-green-500 py-2 text-slate-50 font-semibold  cursor-pointer hover:bg-green-400 duration-200 absolute bottom-0 left-0' value="Create Task" />
         </form>
     )
 }
