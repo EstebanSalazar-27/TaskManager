@@ -16,7 +16,7 @@ interface TaskProps {
 export const Task = ({ taskName, priority, status, startedAt, finishedAt, id, taskHandlers, referencia, dragProps, dragHandle }: TaskProps) => {
 
     return (
-        <tr {...dragHandle} {...dragProps} ref={referencia} key={id} className='flex items-center bg-slate-200'>
+        <tr {...dragHandle} {...dragProps} ref={referencia} key={id} className='flex items-center bg-slate-200 shadow-sm'>
             <TdTable data={taskName} />
             <TdTable data={priority} />
             <TdTable data={status} />

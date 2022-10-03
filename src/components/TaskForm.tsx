@@ -17,9 +17,9 @@ const initialValueTask: TaskType = {
 
 export const TaskForm = ({ dispatchAction, showTaskCreation }: TaskFormProps) => {
     const [task, setTask] = useState<TaskType>(initialValueTask)
-    
+
     const id = useId()
-    const showFormStyles = showTaskCreation ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+    const showFormStyles = showTaskCreation ? "opacity-100 blur-0" : "opacity-0  blur-sm"
     const handleChange = (e: any) => {
         setTask({
             ...task,
@@ -27,28 +27,28 @@ export const TaskForm = ({ dispatchAction, showTaskCreation }: TaskFormProps) =>
         })
     }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         const newTask = {
             ...task,
             status: "pending",
             id: `${id}-${task.taskName}`,
             startedAt: new Date()
         }
-        e.preventDefault()
         dispatchAction({ type: ActionKinds.ADD_NEW_TASK, payload: newTask })
         setTask(initialValueTask)
     }
 
     return (
-        <form onSubmit={handleSubmit} className={`w-full mt-10 min-h-[300px] p-2  left-0 duration-500 bg-slate-50 flex flex-col shadow-md gap-2 ${showFormStyles} `}>
+        <form role={'form'} onSubmit={handleSubmit} className={`w-full mt-10 min-h-[300px] p-2  left-0 duration-500 bg-slate-50 flex flex-col shadow-md gap-2 ${showFormStyles} `}>
             <h2 className='text-slate-700 font-bold text-lg'>Task Creations</h2>
-            <label className='font-semibold text-slate-600' htmlFor="name">
-                Task:
-                <input required onChange={handleChange} id='name' type="name" value={task.taskName} className='w-full p-2 bg-slate-200' name="taskName" />
+            <label className='font-semibold text-slate-600' id='taskname-label' htmlFor="taskName">
+                Task
+                <input data-testid='taskname-input' required onChange={handleChange} id='taskName' type="name" value={task.taskName} className='w-full p-2 bg-slate-200' name="taskName" />
             </label>
 
-            <label className='text-slate-600 font-semibold' htmlFor="">
-                Priority:
-                <select onChange={handleChange} name="priority" className='capitalize w-full bg-slate-200 py-2'>
+            <label className='text-slate-600 font-semibold' id='priority-label' htmlFor="priority">
+                Priority
+                <select role={'selector'} onChange={handleChange} name="priority" id='priority' className='capitalize w-full bg-slate-200 py-2'>
                     <option value="low">low</option>
                     <option value="medium">medium</option>
                     <option value="high">high</option>

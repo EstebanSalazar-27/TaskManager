@@ -77,7 +77,8 @@ export const TasksWrapper = () => {
     return (
         <div className='w-full relative' >
             <ListOfTasks showTaskCreation={showTaskCreation} taskHandlers={taskHandlers} setShowTaskCreation={setShowTaskCreation} dispatchAction={dispatch} tasks={tasks} />
-            <TaskForm showTaskCreation={showTaskCreation} dispatchAction={dispatch} />
+            {showTaskCreation && <TaskForm showTaskCreation={showTaskCreation} dispatchAction={dispatch} />}
+
         </div>
     )
 }
